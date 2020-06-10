@@ -5,19 +5,21 @@
 
 Esta documentação é um básico das principais maneiras de utilizarmos expressões regulares.
 
-# Conteúdo
+# 📚 Conteúdo
+
 - [RegEX](#regex)
-- [Conteúdo](#conteúdo)
+- [📚 Conteúdo](#-conteúdo)
   - [Caracteres Especiais](#caracteres-especiais)
   - [Caracteres não visíveis](#caracteres-não-visíveis)
   - [Classes de caracteres](#classes-de-caracteres)
   - [Classes Opostas](#classes-opostas)
   - [Múltiplos Padrões](#múltiplos-padrões)
   - [Operadores de Repetição](#operadores-de-repetição)
+  - [Grupos de Captura](#grupos-de-captura)
+  - [Back References](#back-references)
+  - [Ancoras](#ancoras)
 
 ---
-
-
 ## Caracteres Especiais
 
 Alguns caracteres possuem um significado especial para o texto. Estes caracteres são:
@@ -54,7 +56,7 @@ Existem classes específicas que são pré-definidas:
 - A classe `\w` é equivalente à classe [a-zA-Z_0-9]
 - A classe `.` reconhece todos os tipos de caracteres, exceto o \n.
 
-> Por exemplo, a RegEx `\d\w` **reconhece** o padrão 9a e o 11, mas não reconhece o padrão a9.
+> ⚠ Por exemplo, a RegEx `\d\w` **reconhece** o padrão 9a e o 11, mas não reconhece o padrão a9.
 
 ## Classes Opostas
 
@@ -90,7 +92,40 @@ A idéia principal desses operadores é permitir que você defina um padrão esp
 - `{n,}` determina que o que vier imediatamente antes dele deve aparecer n ou mais vezes na expressão.
 - `{n, m}` determina que o que vier imediatamente antes dele deve aparecer no mínimo n e no máximo m vezes na expressão.
 
-> Não necessariamente será um caractere antes do operador. É permitido cadeias também.
+> ⚠ Não necessariamente será um caractere antes do operador. É permitido cadeias também.
+
+---
+
+## Grupos de Captura
+
+Para definir um grupo de captura você utiliza os caracteres( e ) envolvendo o padrão de RegEx que você que capturar no seu texto.
+
+- A RegEx `Assunto: (\w+)` reconhece o padrão `Assunto: importante` e captura **importante** no grupo `1`.
+- A RegEx `(parametro=(\w+))` reconhece o padrão `parametro=legal` e captura **parametro**=**legal** no grupo `1` e `legal` no grupo 2.
+
+---
+
+## Back References
+
+Back references é utilizado quando queremos conhecer um trecho previamente capturado (como o conteúdo entre duas tags, por exemplo).
+
+Para utilizar uma **back reference**, utilizamos o caractere `\` seguido pelo número do grupo de captura que queremos referenciar. Vale lembrar que o grupo `0` é tudo que a RegEx encontrou. Então só faz sentido começarmos a referenciar a partir do `1`.
+
+- A RegEx `(a)\1` reconhece o padrão aa
+- A RegEx `<([^>]+)>[^<]+</\1>` reconhece o padrão` <b>abc</b>`, mas não reconhece o padrão `<b>abc</i>`
+- A RegEx `(b+)\1` reconhece todas as sequências de `b` que tenham um número de caracteres **pares** (como bb, bbbb, etc)
+
+---
+
+## Ancoras
+
+Âncoras servem para dar uma referência para as suas RegEx. Por exemplo, você pode querer reconhecer `tomate`, mas não querer reconhecer `o tomate`.
+
+Para fazer isso, você pode usar um operador como o `^`, que âncora ao começo da linha, o `$` que âncora ao fim da linha e o `\b`, que ancora a qualquer coisa que não seja uma letra ou número.
+
+- A RegEx `^tomate` reconhece o padrão `tomate`, mas não reconhece `o tomate`
+- A RegEx `tomate$` reconhece o padrão `tomate` e `bom tomat`e, mas não reconhece `tomates`
+- A RegEx `\btomate\b` reconhece o padrão `tomate` e `bom tomate` e `tomate gostoso`, mas não reconhece `tomates`
 
 ---
 
