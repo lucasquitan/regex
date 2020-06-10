@@ -1,14 +1,16 @@
-# RegEX
+<div align="center">
+    <h1>RegEX</h1>
+    <img src="https://img.shields.io/github/last-commit/lucasquitan/regex">
+    <img src="https://img.shields.io/github/stars/lucasquitan/regex">
+</div>
 
-<img src="https://img.shields.io/github/last-commit/lucasquitan/regex">
-<img src="https://img.shields.io/github/stars/lucasquitan/regex">
+# Conteúdo
 
-Esta documentação é um básico das principais maneiras de utilizarmos expressões regulares.
-
-# 📚 Conteúdo
-
-- [RegEX](#regex)
-- [📚 Conteúdo](#-conteúdo)
+- [Conteúdo](#conteúdo)
+  - [História](#história)
+    - [Definição](#definição)
+    - [Origem](#origem)
+    - [Teoria da Computação (Linguagens Formais)](#teoria-da-computação-linguagens-formais)
   - [Caracteres Especiais](#caracteres-especiais)
   - [Caracteres não visíveis](#caracteres-não-visíveis)
   - [Classes de caracteres](#classes-de-caracteres)
@@ -17,9 +19,33 @@ Esta documentação é um básico das principais maneiras de utilizarmos express
   - [Operadores de Repetição](#operadores-de-repetição)
   - [Grupos de Captura](#grupos-de-captura)
   - [Back References](#back-references)
-  - [Ancoras](#ancoras)
+  - [Âncoras](#âncoras)
 
 ---
+## História
+
+### Definição
+
+No mundo da computação, uma **expressão regular** ou `Regex` (ou os estrangeirismos regex ou regexp, abreviação do inglês regular expression) provê uma forma concisa e flexível de identificar cadeias de caracteres de interesse, como caracteres particulares, palavras ou padrões de caracteres. Expressões regulares são escritas numa linguagem formal que pode ser interpretada por um processador de expressão regular, um programa que serve um gerador de analisador sintático ou examina o texto e identifica as partes que casam com a especificação dada.
+
+Uma expressão regular (ou, um padrão) descreve um conjunto de cadeias de caracteres, de forma concisa, sem precisar listar todos os elementos do conjunto. Por exemplo, um conjunto contendo as cadeias `Handel`, `Händel` e `Haendel` pode ser descrito pelo padrão `H(ä|ae?)ndel`. A maioria dos formalismos provê pelo menos três operações para construir expressões regulares.
+
+
+### Origem
+
+A origem das expressões regulares está na teoria dos autômatos e na [teoria das linguagens formais](#teoria-da-computação-linguagens-formais), e ambas fazem parte da teoria da computação. Esses campos estudam modelos de computação (autômatos) e formas de descrição e classificação de linguagens formais. Na década de 1950, o matemático **Stephen Cole Kleene** descreveu tais modelos usando sua notação matemática chamada de "conjuntos regulares", formando a álgebra de Kleene.
+
+### Teoria da Computação (Linguagens Formais)
+
+Expressões regulares podem ser expressas através da teoria de linguagens formais. Elas consistem de constantes e operadores que denotam conjuntos de cadeias de caracteres e operações sobre esses conjuntos, respectivamente. Dado um **alfabeto finito** denotado por `Σ`, as seguintes constantes são definidas:
+
+- **Conjunto Vazio** ∅:  Denotando o conjunto ∅
+- **Cadeia Vazia** ε: Denotando ε. O conjunto é denotado por {ε}
+
+De forma literal: Dado um a qualquer partencendo ao alfabeto Σ. Em outras palavras, temos `a ∈ Σ | Σ = {a}`.
+
+Para mais informações e materiais sobre esse assunto, clique [aqui](https://cic.unb.br/~rezende/tc.html) e saiba mais. [**Teoria da Computação - UnB**]
+
 ## Caracteres Especiais
 
 Alguns caracteres possuem um significado especial para o texto. Estes caracteres são:
@@ -56,7 +82,7 @@ Existem classes específicas que são pré-definidas:
 - A classe `\w` é equivalente à classe [a-zA-Z_0-9]
 - A classe `.` reconhece todos os tipos de caracteres, exceto o \n.
 
-> ⚠ Por exemplo, a RegEx `\d\w` **reconhece** o padrão 9a e o 11, mas não reconhece o padrão a9.
+> Por exemplo, a RegEx `\d\w` **reconhece** o padrão 9a e o 11, mas não reconhece o padrão a9.
 
 ## Classes Opostas
 
@@ -92,7 +118,7 @@ A idéia principal desses operadores é permitir que você defina um padrão esp
 - `{n,}` determina que o que vier imediatamente antes dele deve aparecer n ou mais vezes na expressão.
 - `{n, m}` determina que o que vier imediatamente antes dele deve aparecer no mínimo n e no máximo m vezes na expressão.
 
-> ⚠ Não necessariamente será um caractere antes do operador. É permitido cadeias também.
+> Não necessariamente será um caractere antes do operador. É permitido cadeias também.
 
 ---
 
@@ -117,7 +143,7 @@ Para utilizar uma **back reference**, utilizamos o caractere `\` seguido pelo n�
 
 ---
 
-## Ancoras
+## Âncoras
 
 Âncoras servem para dar uma referência para as suas RegEx. Por exemplo, você pode querer reconhecer `tomate`, mas não querer reconhecer `o tomate`.
 
@@ -129,4 +155,6 @@ Para fazer isso, você pode usar um operador como o `^`, que âncora ao começo 
 
 ---
 
-Direitos reservados a [VidaGeek.net](http://aprenda.vidageek.net/aprenda/regex)
+<p align="center">
+    O conteúdo técnico desde documento foi retirado de <a href="http://aprenda.vidageek.net/aprenda/regex">VidaGeek.net</a>
+</p>
